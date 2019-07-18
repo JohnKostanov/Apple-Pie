@@ -10,6 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    //  список слов для угадывания
+    var listOfWords = ["арбуз", "банан", "вертолет", "гномик", "домик"]
+    
+    // количество неверных попыток
+    let incorrectMovesAllowed = 7
+    
+    // количество выигрышей и проигрышей
+    var totalWins = 0
+    var totalLosses = 0
+    
+    var currentGame: Game!
+    
+    
     @IBOutlet var treeImageView: UIImageView!
     
     
@@ -22,9 +35,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        for button in letterButtons {
-           _ = button
-        }
+        // запуск новой игры
+        newRound()
+        
+    }
+    
+    // запуск новой игры
+    func newRound() {
+        let newWord = listOfWords.removeFirst()
+        
+        currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed)
+    }
+    
+    // обновление интерфейса
+    func update() {
+        // обновляем картинку
+        let imageName = "Tree \(currentGame.incorrectMovesRemaining)"
+        let image = UIImage(named: imageName)
+        treeImageView.image = image
+        //обновляем счет
+        scoreLabel.text = "Выигрыши: \(totalWins), проигрыши: \(totalLosses)"
+        
+        
     }
 
     @IBAction func buttonTapped(_ sender: UIButton) {
