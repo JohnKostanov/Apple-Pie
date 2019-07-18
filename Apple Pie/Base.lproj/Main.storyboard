@@ -33,7 +33,7 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Usc-aK-otq">
                                                         <rect key="frame" x="0.0" y="0.0" width="43.5" height="32"/>
                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Medium" family="Apple SD Gothic Neo" pointSize="20"/>
-                                                        <state key="normal" title="A"/>
+                                                        <state key="normal" title="А"/>
                                                         <connections>
                                                             <action selector="buttonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DX3-fq-Ufo"/>
                                                         </connections>

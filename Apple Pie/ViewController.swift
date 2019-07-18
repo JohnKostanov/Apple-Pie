@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     //  список слов для угадывания
     var listOfWords = ["арбуз", "банан", "вертолет", "гномик", "домик"]
     
+    
     // количество неверных попыток
     let incorrectMovesAllowed = 7
     
@@ -46,15 +47,24 @@ class ViewController: UIViewController {
         
         currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [])
         
-        update()
+        updateUI()
     }
     
     // обновление интерфейса
-    func update() {
+    func updateUI() {
         // обновляем картинку
         let imageName = "Tree \(currentGame.incorrectMovesRemaining)"
         let image = UIImage(named: imageName)
         treeImageView.image = image
+        
+        // обновляем угадываемое слово
+        var letters = [String]()
+        for letter in currentGame.formattedWord {
+            letters.append(String(letter))
+        }
+        let wordWwithSpaces = letters.joined(separator: " ")
+        corectWorldLabel.text = wordWwithSpaces
+        
         //обновляем счет
         scoreLabel.text = "Выигрыши: \(totalWins), проигрыши: \(totalLosses)"
         
@@ -66,7 +76,7 @@ class ViewController: UIViewController {
         let letterString = sender.title(for: .normal)!
         let letter = Character(letterString.lowercased())
         currentGame.playerGuessed(letter: letter)
-        update()
+        updateUI()
     }
     
 }

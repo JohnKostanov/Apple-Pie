@@ -9,12 +9,26 @@
 import Foundation
 
 struct Game {
-    var word: String // угадываемое слово
+    var word: String // загаданное слово
     
     var incorrectMovesRemaining: Int // количество оставшихся попыток
     
     //  список нажатых букв
     var guessedLetters: [Character]
+    
+    // отображаемое слово
+    var formattedWord: String {
+        var guessedWord = ""
+        
+        for letter in word {
+            if guessedLetters.contains(letter) {
+                guessedWord += "\(letter)"
+            } else {
+                guessedWord += "_"
+            }
+        }
+        return guessedWord
+    }
     
     mutating func playerGuessed(letter: Character) {
         guessedLetters.append(letter)
