@@ -55,14 +55,11 @@ class ViewController: UIViewController {
             let newWord = listOfWords.removeFirst()
             
             currentGame = Game(word: newWord, incorrectMovesRemaining: incorrectMovesAllowed, guessedLetters: [])
-            
             enableLetterButtons(true)
-            
-            updateUI()
         } else {
             enableLetterButtons(false)
         }
-        
+        updateUI()
     }
     
     // разрешить/запретить кнопки
