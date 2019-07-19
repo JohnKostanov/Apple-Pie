@@ -77,6 +77,19 @@ class ViewController: UIViewController {
         let letter = Character(letterString.lowercased())
         currentGame.playerGuessed(letter: letter)
         updateUI()
+        updateGameState()
+    }
+    // проверяем окончание игры
+    func updateGameState() {
+        if currentGame.incorrectMovesRemaining < 1 {
+            // проиграли раунд
+            totalLosses += 1
+        } else if currentGame.word == currentGame.formattedWord {
+            // выиграли раунд
+            totalWins += 1
+        } else {
+            updateUI()
+        }
     }
     
 }
